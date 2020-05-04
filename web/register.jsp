@@ -1,18 +1,18 @@
-<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="my" tagdir="/WEB-INF/tags" %>
-
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="my" tagdir="/WEB-INF/tags"%>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Регистрация нового пользователя</title>
-    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 </head>
 <body>
 <jsp:include page="/static/header.jsp"></jsp:include>
 <my:layout1Column>
     <h1>Регистрация нового пользователя</h1>
-    <my:errorMessage/>
-    <form action="/doRegister.jsp" method="post">
+    <my:errorMessage />
+    <form id="mform" action="/doRegister.jsp" method="post">
         <table>
                 <%-- body="0" cellspacing="0" cellpadding="10">--%>
             <tr>
@@ -32,15 +32,22 @@
                 <td><input type="text" name="email" value="${sessionScope.userData.email}"></td>
             </tr>
             <tr>
+                <td><button type="button" onclick="document.getElementById('cap').src='img?'+Math.random()">Обновить</button></td>
+                <td><img id="cap" src="img"></td>
+            </tr>
+            <tr>
+                <td>CAPTCHA:</td>
+                <td><input type="text" name="captcha"></td>
+            </tr>
+            <tr>
                 <td></td>
-                <td>
-					<input type="submit" value="Зарегистрироваться">
-					<input type="button" value="Отменить" onclick="window.location='<c:url
-							value="/"/>';"></td>
+                <td><input type="submit" value="Зарегистрироваться"> <input
+                        type="button" value="Отменить"
+                        onclick="window.location='<c:url value="/index.jsp"/>';"></td>
             </tr>
         </table>
     </form>
 </my:layout1Column>
-<%@ include file="/static/footer.jsp" %>
+<%@ include file="/static/footer.jsp"%>
 </body>
 </html>

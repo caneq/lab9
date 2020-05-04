@@ -9,6 +9,7 @@
 	<c:set var="dir" scope="session" value="${param.dir}" />
 </c:if>
 <%-- Общая декоративная "шапка" для всех страниц --%>
+<a href="/" style="text-decoration:none; color: #000000;">
 <div style="background-color: #a0c8ff; padding: 10px;">
 	<img src="${pageContext.request.contextPath}/resources/ad.png" width="50" height="53" border="0"
 		align="left">
@@ -16,6 +17,7 @@
 		style="font-family: 'Trebuchet'; font-size: 30px; height: 53px; margin-left: 80px;">
 		Доска объявлений "Фиговый листок" v.1.0.0</div>
 </div>
+</a>
 <%-- Панель отображается если пользователь аутентифицирован --%>
 <c:if test="${sessionScope.authUser!=null}">
 	<div style="background-color: #ccc; padding: 5px">
