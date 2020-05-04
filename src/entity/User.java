@@ -3,31 +3,22 @@ package entity;
 import java.io.Serializable;
 
 public class User implements Serializable, Identifiable {
-
     private static final long serialVersionUID = -5363773994153628499L;
-
     private int id;
     private String login = "";
     private String name = "";
     private String password = "";
     private String email = "";
+    private String captcha = "";
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        User other = (User) obj;
-        return id == other.id;
+    public String getCaptcha() {
+        return captcha;
     }
 
-    @Override
-    public int hashCode() {
-        return id;
+    public void setCaptcha(String captcha) {
+        this.captcha = captcha;
     }
 
-    @Override
     public int getId() {
         return id;
     }
@@ -66,5 +57,22 @@ public class User implements Serializable, Identifiable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int hashCode() {
+        return id;
+    }
+
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        User other = (User) obj;
+        if (id != other.id)
+            return false;
+        return true;
     }
 }
