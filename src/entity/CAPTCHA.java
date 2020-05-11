@@ -24,28 +24,15 @@ public class CAPTCHA {
 		return image;
 	}
 
-	private int randomInt(int n) {
-		return Math.abs(new Random().nextInt()) % n;
-	}
-
 	private String randomStr(){
-		StringBuffer sb=new StringBuffer("@");
-		int n=randomInt(26)+65+10;
-		if(n<=90)
-			sb.setCharAt(0, (char) n);
-		else
-			sb.setCharAt(0, (char) (n-43));
-		return sb.toString();
-	}
-
-	private Color randomColor(){
-		return new Color(new Float(Math.random()), new Float(Math.random()),new Float(Math.random()));
+		String chars = "1234567890";
+		return String.valueOf(chars.charAt((int) (Math.random() * chars.length())));
 	}
 
 	private BufferedImage getImg(String str){
 		BufferedImage bi = new BufferedImage(WIDTHs,HEIGHTs,BufferedImage.TYPE_INT_ARGB);
 		Graphics2D canvas = bi.createGraphics();
-		canvas.setColor(randomColor());
+		canvas.setColor(Color.BLACK);
 		canvas.setFont(new Font("Arial", 10, 50));
 		canvas.drawString(str, 0, 40);
 		return bi;
@@ -63,11 +50,6 @@ public class CAPTCHA {
 			stringb.setCharAt(i, s.charAt(0));
 			canvas.drawImage(getImg(s), at,null);
 			at.setToIdentity();
-		}
-		for(int i=0;i<2;i++){
-			canvas.setStroke(new BasicStroke(new Float(randomInt(4)+2), BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, null, 0.0f));
-			canvas.setColor(randomColor());
-			canvas.drawLine(randomInt(WIDTH),randomInt(HEIGHTs)+10,randomInt(WIDTH),randomInt(HEIGHTs)+10);
 		}
 		string=stringb.toString();
 	}

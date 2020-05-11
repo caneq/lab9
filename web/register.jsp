@@ -36,7 +36,7 @@
                 <td><img id="cap" src="img"></td>
             </tr>
             <tr>
-                <td>CAPTCHA:</td>
+                <td>Код с картинки:</td>
                 <td><input type="text" name="captcha"></td>
             </tr>
             <tr>
